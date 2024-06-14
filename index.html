@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cordinates Picker</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<style>
+    #map {
+        height: 600px;
+        width: 100%;
+    }
+
+
+    .coordinates {
+        margin-top: 10px;
+    }
+</style>
+
+
+<body>
+    <h1>Geojson data visualization</h1>
+    <div id="map"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var map = L.map('map').setView([-0.41303515319932, 36.95835113525391], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        // 
+        // adding a marker
+        var marker = L.marker([51.5, -0.09]).bindPopup("Iam a marker").addTo(map);
+        // Load GeoJSON from an external file
+        $.getJSON('data/Muringato zones.geojson', function (data) {
+            // Add the loaded GeoJSON data to the map
+            L.geoJSON(data).addTo(map);
+        });
+        // Gate way locations.geojson
+        $.getJSON('data/Gate way locations.geojson', function (data) {
+            // Add the loaded GeoJSON data to the map
+            L.geoJSON(data).addTo(map);
+        });
+        // Muringato HRUS.geojson
+        $.getJSON('data/hrus.geojson', function (data) {
+            // Add the loaded GeoJSON data to the map
+            L.geoJSON(data).addTo(map);
+        });
+        //Muringato Rivers.geojson
+        $.getJSON('data/Muringato Rivers.geojson', function (data) {
+            // Add the loaded GeoJSON data to the map
+            L.geoJSON(data).addTo(map);
+        });
+    </script>
+</body>
+
+</html>

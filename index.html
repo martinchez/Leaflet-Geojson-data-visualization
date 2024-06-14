@@ -36,24 +36,20 @@
         // 
         // adding a marker
         var marker = L.marker([51.5, -0.09]).bindPopup("Iam a marker").addTo(map);
-        // Load GeoJSON from an external file
+        
         $.getJSON('data/Muringato zones.geojson', function (data) {
-            // Add the loaded GeoJSON data to the map
             L.geoJSON(data).addTo(map);
         });
         // Gate way locations.geojson
         $.getJSON('data/Gate way locations.geojson', function (data) {
-            // Add the loaded GeoJSON data to the map
             L.geoJSON(data).addTo(map);
         });
         // Muringato HRUS.geojson
         $.getJSON('data/hrus.geojson', function (data) {
-            // Add the loaded GeoJSON data to the map
             L.geoJSON(data).addTo(map);
         });
         //Muringato Rivers.geojson
         $.getJSON('data/Muringato Rivers.geojson', function (data) {
-            // Add the loaded GeoJSON data to the map
             L.geoJSON(data).addTo(map);
         });
     </script>
